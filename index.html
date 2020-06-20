@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+/* 浏览器滚动条样式 */
+
+/* width */
+::-webkit-scrollbar {
+	width: 4px;
+	height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: rgb(255, 255, 255);
+	border-radius: 8px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: rgb(201, 201, 202);
+	border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: rgb(162, 162, 163);
+}
+/* IE 浏览器 */
+        .scrollbar{
+            /*三角箭头的颜色*/
+            scrollbar-arrow-color: #fff;
+            /*滚动条滑块按钮的颜色*/
+            scrollbar-face-color: #0099dd;
+            /*滚动条整体颜色*/
+            scrollbar-highlight-color: #0099dd;
+            /*滚动条阴影*/
+            scrollbar-shadow-color: #0099dd;
+            /*滚动条轨道颜色*/
+            scrollbar-track-color: #0066ff;
+            /*滚动条3d亮色阴影边框的外观颜色——左边和上边的阴影色*/
+            scrollbar-3dlight-color:#0099dd;
+            /*滚动条3d暗色阴影边框的外观颜色——右边和下边的阴影色*/
+            scrollbar-darkshadow-color: #0099dd;
+            /*滚动条基准颜色*/
+            scrollbar-base-color: #0099dd;
+        }
+ 
+        /* chrome & safari 浏览器 */
+        /*滚动条整体部分,必须要设置*/
+        .scrollbar::-webkit-scrollbar{
+            width: 10px;
+            height: 10px;
+            background-color: #0099ff;
+        }
+        /*滚动条的轨道*/
+        .scrollbar::-webkit-scrollbar-track{
+            background-color: #0099ff;
+        }
+        /*滚动条的滑块按钮*/
+        .scrollbar::-webkit-scrollbar-thumb{
+            border-radius: 0;
+            background-color: #f00;
+            box-shadow: inset 0 0 5px #f00;
+        }
+        /*滚动条的上下两端的按钮*/
+        .scrollbar::-webkit-scrollbar-button{
+            height: 0;
+            background-color: #0099ff;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .parent {
+            margin: 90px auto 500px;
+            width: 800px;
+            height: 600px;
+            position: relative;
+            background-color: white;
+            color: black;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .cell-box1,.cell-box2,.cell-box3,.cell-box4 {
+            position: relative;
+            top: 15px;
+            opacity: 0;
+            text-align: center;
+        }
+        .cell-box2{
+            font-size: 60px;
+        }
+    </style>
+       
+       <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+</head>
+<body>
+ 
+   
+<div class="parent">
+    <div class="cell-box1">
+        新款
+        <br>
+        iPhone SE
+    </div>
+    <div class="cell-box2">称心称手，超值入手</div>
+    <div class="cell-box3">RMB 3299起</div>
+    <div class="cell-box4">
+        <a href="">进一步了解</a>
+        <a href="">预购</a>
+    </div>
+    <video  muted autoplay="autoplay">
+        <source src="https://www.apple.com.cn/105/media/us/home/2020/bf7d2c3c-0089-4946-954b-b4a378b655b2/iphone-se-takeover/anim/touch-id/medium.mp4" type="video/ogg" />
+        <source src="https://www.apple.com.cn/105/media/us/home/2020/bf7d2c3c-0089-4946-954b-b4a378b655b2/iphone-se-takeover/anim/touch-id/medium.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <video  muted autoplay="autoplay">
+        <source src="https://www.apple.com.cn/105/media/us/home/2020/bf7d2c3c-0089-4946-954b-b4a378b655b2/iphone-se-takeover/anim/a13/medium.mp4" type="video/ogg" />
+        <source src="https://www.apple.com.cn/105/media/us/home/2020/bf7d2c3c-0089-4946-954b-b4a378b655b2/iphone-se-takeover/anim/a13/medium.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <video  muted autoplay="autoplay">
+        <source src="https://www.apple.com.cn/105/media/us/home/2020/bf7d2c3c-0089-4946-954b-b4a378b655b2/iphone-se-takeover/anim/portrait-mode/small.mp4" type="video/ogg" />
+        <source src="https://www.apple.com.cn/105/media/us/home/2020/bf7d2c3c-0089-4946-954b-b4a378b655b2/iphone-se-takeover/anim/portrait-mode/small.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <video  muted autoplay="autoplay">
+        <source src="https://www.apple.com.cn/105/media/us/home/2020/bf7d2c3c-0089-4946-954b-b4a378b655b2/iphone-se-takeover/anim/hero/small.mp4" type="video/ogg" />
+        <source src="https://www.apple.com.cn/105/media/us/home/2020/bf7d2c3c-0089-4946-954b-b4a378b655b2/iphone-se-takeover/anim/hero/small.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+</div>
+<script>
+    $(function () {
+        $(window).scroll(function () {
+            slideUp($(".cell-box1"));
+        });
+        function slideUp(obj) {
+            var targetHeight = obj.offset().top;   //目标元素到顶部的距离
+            var scrollTop = $(window).scrollTop(); //页面滚动的距离
+            if (scrollTop > targetHeight - $(window).height() + 1) {
+                obj.animate({top:0, opacity: 1, filter: 'Alpha(opacity=90)'}, 1000);
+            }
+        };
+    });
+    $(function () {
+        $(window).scroll(function () {
+            slideUp($(".cell-box2"));
+        });
+        function slideUp(obj) {
+            var targetHeight = obj.offset().top;   //目标元素到顶部的距离
+            var scrollTop = $(window).scrollTop(); //页面滚动的距离
+            if (scrollTop > targetHeight - $(window).height() + 1) {
+                obj.animate({top:0, opacity: 1, filter: 'Alpha(opacity=90)'}, 1500);
+            }
+        };
+    });
+    $(function () {
+        $(window).scroll(function () {
+            slideUp($(".cell-box3"));
+        });
+        function slideUp(obj) {
+            var targetHeight = obj.offset().top;   //目标元素到顶部的距离
+            var scrollTop = $(window).scrollTop(); //页面滚动的距离
+            if (scrollTop > targetHeight - $(window).height() + 1) {
+                obj.animate({top:0, opacity: 1, filter: 'Alpha(opacity=90)'}, 2000);
+            }
+        };
+    });
+    $(function () {
+        $(window).scroll(function () {
+            slideUp($(".cell-box4"));
+        });
+        function slideUp(obj) {
+            var targetHeight = obj.offset().top;   //目标元素到顶部的距离
+            var scrollTop = $(window).scrollTop(); //页面滚动的距离
+            if (scrollTop > targetHeight - $(window).height() + 1) {
+                obj.animate({top:0, opacity: 1, filter: 'Alpha(opacity=90)'}, 2500);
+            }
+        };
+    });
+</script>
+</body>
+</html>
